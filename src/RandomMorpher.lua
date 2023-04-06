@@ -14,7 +14,7 @@ local function MorpherOnGossipHello (event, player, creature)
 
     if (player:GetClass() == 3) or (player:GetClass() == 9) or (player:GetClass() == 6 and player:HasSpell(52143)) then -- checks for hunter (class 3), for dk with permanent ghoul ability (class 6, spellid from talent 52143) and for warlock (class 9)
         player:GossipMenuAddItem(0, "|TInterface/ICONS/ability_druid_healinginstincts:45:45:-30:0|t Random Morph my Pet|r", 0, 5)
-        player:GossipMenuAddItem(0, "|TInterface/ICONS/bility_druid_healinginstincts:45:45:-30:0|t I want to have a specific Display ID for my Pet|r", 0, 9, true, "Insert your wished Display ID")
+        player:GossipMenuAddItem(0, "|TInterface/ICONS/ability_druid_healinginstincts:45:45:-30:0|t I want to have a specific Display ID for my Pet|r", 0, 9, true, "Insert your wished Display ID")
         player:GossipMenuAddItem(0, "|TInterface/ICONS/ability_druid_healinginstincts:45:45:-30:0|t Demorph my Pet|r", 0, 6)
         player:GossipMenuAddItem(0, "|TInterface/ICONS/inv_misc_questionmark:45:45:-30:0|t Show me the Display ID of my Pet|r", 0, 7)
     end
