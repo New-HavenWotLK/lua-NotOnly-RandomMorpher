@@ -4,7 +4,7 @@
     You also can hire me if you want to for some lua scripts!
 ]]-- 
 
-local NPC_MORPHER = 500030 
+local NPC_MORPHER = 700030 
 
 local function MorpherOnGossipHello (event, player, creature)
     player:GossipClearMenu()
@@ -12,7 +12,7 @@ local function MorpherOnGossipHello (event, player, creature)
     player:GossipMenuAddItem(0, "|TInterface/ICONS/racechange:45:45:-30:0|t I want to have a specific Display ID|r", 0, 8, true, "Insert your wished Display ID")
     player:GossipMenuAddItem(0, "|TInterface/ICONS/racechange:45:45:-30:0|t Demorph Myself|r", 0, 2)
 
-    if (player:GetClass() == 3) or (player:GetClass() == 9) or (player:GetClass() == 6 and player:HasSpell(52143)) then -- checks for hunter (class 3), for dk with permanent ghoul ability (class 6, spellid from talent 52143) and for warlock (class 9)
+    if (player:GetClass() == 3) or (player:GetClass() == 9) or (player:GetClass() == 6) then -- checks for hunter (class 3), for dk with permanent ghoul ability (class 6, spellid from talent 52143) and for warlock (class 9)
         player:GossipMenuAddItem(0, "|TInterface/ICONS/ability_druid_healinginstincts:45:45:-30:0|t Random Morph my Pet|r", 0, 5)
         player:GossipMenuAddItem(0, "|TInterface/ICONS/ability_druid_healinginstincts:45:45:-30:0|t I want to have a specific Display ID for my Pet|r", 0, 9, true, "Insert your wished Display ID")
         player:GossipMenuAddItem(0, "|TInterface/ICONS/ability_druid_healinginstincts:45:45:-30:0|t Demorph my Pet|r", 0, 6)
@@ -31,7 +31,7 @@ function MorpherOnGossipSelect(event, player, creature, sender, intid, code, men
     local playerDisplayID = player:GetDisplayId() -- gets the players display id
     local petGUID = player:GetPetGUID() -- gets the pets guid
     local petEntry = GetGUIDEntry(petGUID) -- gets the extact guid entry of the pet!
-    local petTarget = player:GetNearestCreature(2, nil, 2, 1) -- checks for a target near the player which is friendly and alive (pet)
+    local petTarget = player:GetMap():GetWorldObject(petGUID):ToCreature()  -- checks for a target near the player which is friendly and alive (pet)
     local sCode = tostring(code)
     if (intid == 1) then
         player:SetDisplayId(displayID) -- sets the display id to a random taken number from math.random(#numbervalue)
